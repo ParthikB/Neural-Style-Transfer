@@ -9,7 +9,7 @@ What are we achieving?
 <hr>
 Logs:
 
-- v0.1 --> Stable<br>
+- v0.1<br>
   <i>Issues: The channels are mixed up, need to fix them.</i>
   <hr>
 
