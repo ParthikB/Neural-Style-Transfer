@@ -4,7 +4,7 @@ Neural Style Transfer is an optimization technique used to take two images, a co
 What are we achieving?
 
 ![](input.PNG)
-![](output.PNG)
+![](output.png)
 
 <hr>
 Logs:
