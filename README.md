@@ -21,6 +21,6 @@ Logs:
   
 - v0.3 --> Stable {Base2}<br>
   <i>Updates: Added ETA, Added 'output directory' parameter.<br>
-     Next Job: Stylize an object over a style image succesfully.
+     Next Job: Stylize an object over a style image successfully.
   </i>
   <hr>
