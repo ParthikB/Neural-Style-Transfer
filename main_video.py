@@ -1,17 +1,17 @@
 from __helpers__ import *
 
 
-VIDEO_PATH       = "/content/drive/My Drive/Colab Notebooks/Neural Style Transfer/vids/surf.mp4" #@param {type:"string"}
-STYLE_IMAGE_PATH = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8LOCDfTvcJ_V4fBdtL3R_oQn7D9P96PPzJFCksdWeKHHhyfUZ" #@param {type:"string"}
+VIDEO_PATH       = ''
+STYLE_IMAGE_PATH = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8LOCDfTvcJ_V4fBdtL3R_oQn7D9P96PPzJFCksdWeKHHhyfUZ'
 
-FPS_QUALITY      = "high" 
+FPS_QUALITY      = 'low' 
 '''
 high   > original fps > slowest
 medium > 
 low    > bad fps      > fastest
 ''' 
 
-STYLE_QUALITY    = 100 # Any integer in range (100, 1000)
+STYLE_QUALITY    = 1 # Any integer in range (100, 1000)
 '''
 The more the STYLE_QUALITY, the more better every frame is stylized.
 BUT, will take more time.
@@ -30,13 +30,11 @@ for frame_number in tqdm(range(0, len(vid_frames), skip_frame_every(FPS_QUALITY)
 
   content = vid_frames[frame_number]
 
-  bestImage, bestLoss, output_dirName = runStyleTransfer(content,
-                                                        STYLE_IMAGE_PATH,
-                                                        iterations=style_quality,
-                                                        contentWeight = 1,
-                                                        styleWeight= 0.8)
-  generated_frames.append(bestImage)
-  height, width, channels = bestImage.shape
+  generated_image, _ = runStyleTransfer(content,
+                                  STYLE_IMAGE_PATH,
+                                  iterations=STYLE_QUALITY)
+  generated_frames.append(generated_image)
+  height, width, channels = generated_image.shape
 
 
 

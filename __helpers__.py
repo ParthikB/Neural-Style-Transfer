@@ -1,3 +1,9 @@
+import os
+
+# To suppress all the Tensorflow warning while importing
+import logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
+logging.getLogger('tensorflow').setLevel(logging.FATAL)
 
 import tensorflow as tf
 import keras.backend as K
@@ -6,16 +12,22 @@ from tensorflow.python.keras import models
 from keras.models import Model
 from keras.preprocessing import image
 
+import requests
 from PIL import Image
 import numpy as np
 import cv2
-import os
 import urllib
-from tqdm import tqdm_notebook as tqdm
+from tqdm import tqdm
 
 if tf.__version__[0] == '1':
 	tf.enable_eager_execution()
 # print("Eager Execution Initialized:",tf.executing_eagerly())
+
+
+# Starting session to download Images from URL if fed.
+s = requests.Session()
+s.proxies = {"http": "http://61.233.25.166:80"}
+r = s.get("http://www.google.com")
 
 
 # Defining the Feature Layers we need respectively
@@ -221,11 +233,11 @@ def extract_frames_out_of_the_video(vid_path):
 
 
 def skip_frame_every(fps_quality):
-	if fps_quality == 'Super Duper':
+	if fps_quality == 'high':
 	  skip_frame_every = 1
-	elif fps_quality == 'Fancier than Average':
+	elif fps_quality == 'medium':
 	  skip_frame_every = 3
-	elif fps_quality == 'Ya ok Whatever':
+	elif fps_quality == 'low':
 	  skip_frame_every = 6
 	else:
 	  skip_frame_every = 10
@@ -263,7 +275,7 @@ def runStyleTransfer(contentPath,
   generateImage = tf.Variable(generateImage, dtype=tf.float32)
 
   # Defining the Adam Optimizer
-  optimizer = tf.train.AdamOptimizer(learning_rate=5, epsilon=1e-3)
+  optimizer = tf.keras.optimizers.Adam(learning_rate=5, epsilon=1e-3)
 
   # Storing the best Image and Loss
   bestLoss, bestImage = float('inf'), None
@@ -286,7 +298,7 @@ def runStyleTransfer(contentPath,
   maxVals = 255 - normMeans  
 
   # Creating Logs to use for Plotting Later
-  global contentCostLog, styleCostLog, totalCostLog 
+  # global contentCostLog, styleCostLog, totalCostLog 
   contentCostLog, styleCostLog, totalCostLog = [], [], []
 
 
@@ -319,21 +331,21 @@ def runStyleTransfer(contentPath,
     # Updating the Best Image and Loss
     if loss < bestLoss:
       bestLoss = loss
-      bestImage = generateImage.numpy()
+      bestImage = deprocessImage(generateImage.numpy())
 
     # Saving the Generate Image
     if SAVE_EVERY:
       if iter % SAVE_EVERY == 0:
         new = deprocessImage(generateImage.numpy())
-        cv2.imwrite(f'generateImage_{iter+1}.jpg', new)
+        cv2.imwrite(f'generateImage_{iter+1}.jpg', cv2.cvtColor(new, cv2.COLOR_BGR2RGB))
 
     
-  if not SAVE_EVERY:
-    bestImage = deprocessImage(generateImage.numpy())
-  else:
-    # Saving the numpy Arrays to plot later
-    np.save('contentLoss.npy', contentCostLog)
-    np.save('styleLoss.npy', styleCostLog)
-    np.save('totalCostLoss.npy', totalCostLog)
+  
+  bestImage = deprocessImage(generateImage.numpy())
+  cv2.imwrite(f'FINAL_OUTPUT.jpg', cv2.cvtColor(bestImage, cv2.COLOR_BGR2RGB))
+  # Saving the numpy Arrays to plot later
+  np.save('contentLoss.npy', contentCostLog)
+  np.save('styleLoss.npy', styleCostLog)
+  np.save('totalCostLoss.npy', totalCostLog)
 
-  return bestImage
+  return bestImage, (contentCostLog, styleCostLog, totalCostLog)
