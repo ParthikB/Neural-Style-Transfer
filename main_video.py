@@ -11,7 +11,7 @@ medium >
 low    > bad fps      > fastest
 ''' 
 
-STYLE_QUALITY    = 1 # Any integer in range (100, 1000)
+STYLE_QUALITY    = 100 # Any integer in range (100, 1000)
 '''
 The more the STYLE_QUALITY, the more better every frame is stylized.
 BUT, will take more time.
