@@ -2,7 +2,7 @@
 1) _main_colab_notebook.ipynb_         : Jupyter notebook that contains the whole code in one place.
 2) _main_image.py_                     : Run Style Transfer on image
 3) _main_video.py_                     : Run Style Transfer on Video
-4) __ _helpers_.py_                    : Helper function to support the main functions
+4) __ _helpers__.py_                   : Helper function to support the main functions
 5) _neural_style_transfer_torch.ipynb_ : PyTorch Implementation of the same _*in progress_
 
 # Neural Style Transfer
