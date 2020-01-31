@@ -23,20 +23,18 @@ OUTPUT_FILE_NAME = 'trying_aivayy'
 
 
 
-generated_frames = []
 vid_frames = extract_frames_out_of_the_video(VIDEO_PATH)
+generated_frames = []
 
 for frame_number in tqdm(range(0, len(vid_frames), skip_frame_every(FPS_QUALITY))):
-
   content = vid_frames[frame_number]
-
   generated_image, _ = runStyleTransfer(content,
-                                  STYLE_IMAGE_PATH,
-                                  iterations=STYLE_QUALITY)
+                                        STYLE_IMAGE_PATH,
+                                        iterations=STYLE_QUALITY)
   generated_frames.append(generated_image)
-  height, width, channels = generated_image.shape
 
 
+height, width, channels = generated_frames[0].shape
 
 PATH = os.path.join(os.curdir, 'outputs')
 if not os.path.isdir(PATH):
