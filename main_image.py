@@ -10,19 +10,19 @@ shinchan    = 'https://pbs.twimg.com/profile_images/452516792426975232/rOQPTVq4_
 taj_mahal   = 'https://thumbs-prod.si-cdn.com/Abm-e-V_cqdIqYDo_cXApagw8zI=/800x600/filters:no_upscale():focal(1471x1061:1472x1062)/https://public-media.si-cdn.com/filer/b6/30/b630b48b-7344-4661-9264-186b70531bdc/istock-478831658.jpg'
 ###################################################################
 
-STYLE_QUALITY = 1
+STYLE_QUALITY = 500           # Iterations
 DIR_NAME      = 'seated_nude' # Set this to None if outputs are not required to be saved locally.
 
 contentImagePath = taj_mahal
 styleImagePath   = wave
 
 generatedImage, losses = runStyleTransfer(contentImagePath,
-                                  styleImagePath,
-                                  iterations=STYLE_QUALITY,
-                                  SAVE_EVERY = 0,
-                                  contentWeight = 1,
-                                  styleWeight= 0.8,
-                                  output_dirName = DIR_NAME)
+                                          styleImagePath,
+                                          iterations     = STYLE_QUALITY,
+                                          SAVE_EVERY     = 0,
+                                          contentWeight  = 1,
+                                          styleWeight    = 0.8,
+                                          output_dirName = DIR_NAME)
 
 
 contentCostLog, styleCostLog, totalCostLog = losses
