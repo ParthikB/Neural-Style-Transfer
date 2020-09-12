@@ -19,15 +19,16 @@ import cv2
 import urllib
 from tqdm import tqdm
 
+
 if tf.__version__[0] == '1':
 	tf.enable_eager_execution()
 # print("Eager Execution Initialized:",tf.executing_eagerly())
 
 
 # Starting session to download Images from URL if fed.
-s = requests.Session()
-s.proxies = {"http": "http://61.233.25.166:80"}
-r = s.get("http://www.google.com")
+# s = requests.Session()
+# s.proxies = {"http": "http://61.233.25.166:80"}
+# r = s.get("http://www.google.com")
 
 
 # Defining the Feature Layers we need respectively
@@ -60,8 +61,7 @@ def getModel():
   return models.Model(model.input, modelOutput)
 
 
- # Defining GRAM MATRIX
-
+# Defining GRAM MATRIX
 def gram(x):
 
   # number of channels
@@ -73,8 +73,8 @@ def gram(x):
   
   # gram matrix
   gram = tf.matmul(a, a, transpose_a=True)
-  
   return gram / tf.cast(n, tf.float32)
+
 
 # Defining CONTENT COST
 def contentCost(contentFeatures, generateFeatures):
@@ -94,13 +94,13 @@ def getFeatures(content, style, model):
   
   # Extracting out the different features from the model output
   contentFeatures = [contentFeature[0] for contentFeature in contentOutputs[numStyleLayers:]]
-  styleFeatures = [styleFeature[0] for styleFeature in styleOutputs[:numStyleLayers]]
-
+  styleFeatures   = [styleFeature[0] for styleFeature in styleOutputs[:numStyleLayers]]
   return contentFeatures, styleFeatures
 
 
 def loadImage(path_to_img):
   max_dim = 512
+  # import pdb; pdb.set_trace()
   if type(path_to_img) == str:
     img2show = Image.open(path_to_img)
   else:
@@ -109,17 +109,19 @@ def loadImage(path_to_img):
   # long = max(img2show.size)
   long = (img2show.size)
 
+  long = long[0]
   scale = max_dim/long
   img = img2show.resize((round(img2show.size[0]*scale), round(img2show.size[1]*scale)), Image.ANTIALIAS)
-  
+
   img = image.img_to_array(img)
   
   # We need to broadcast the image array such that it has a batch dimension 
-  img = np.expand_dims(img2show, axis=0)
+  img = np.expand_dims(img, axis=0)
   return img2show, img
  
 
 def urlToImage(url):
+  import pdb; pdb.set_trace()
   resp = urllib.request.urlopen(url)
   img = np.asarray(bytearray(resp.read()), dtype='uint8')
   img = cv2.imdecode(img, cv2.IMREAD_COLOR)
@@ -132,15 +134,14 @@ def urlToImage(url):
 def inputImageAndPreprocess(path):
   # Loading the image and reshaping it according to VGG19 requirements.
   if path[:4]=='http':
-    # print("Loading Image from Internet...")
+    print("Loading Image from Internet...")
     img2show, img = urlToImage(path)
   else:
-    # print("Loading Image from Local...")
+    print("Loading Image from Local...")
     img2show, img = loadImage(path)
   
   # Preprocessing the img according to VGG19 requirements
   img = tf.keras.applications.vgg19.preprocess_input(img)
-
   return img2show, img
 
 
@@ -190,7 +191,6 @@ def totalLoss(model, lossWeights, generateImage, contentFeatures, styleFeatures)
   # Computing Style Cost for every layer
   for generateStyle, combinationStyle in zip(styleFeatures, styleGenerateFeatures):
     styleCostValue += styleWeightPerLayer * styleCost(combinationStyle[0], generateStyle)
-  
 
   # Assigning the weights
   contentCostValue *= contentWeight
@@ -198,7 +198,6 @@ def totalLoss(model, lossWeights, generateImage, contentFeatures, styleFeatures)
 
   # Computing the Total Loss
   totalLossValue = contentCostValue + styleCostValue
-
   return totalLossValue, contentCostValue, styleCostValue
 
 
@@ -207,7 +206,6 @@ def computeGrads(config):
 	  allLoss = totalLoss(**config)
 
 	loss = allLoss[0]
-
 	return tape.gradient(loss, config['generateImage']), allLoss
 
 
@@ -252,7 +250,8 @@ def runStyleTransfer(contentPath,
                      SAVE_EVERY     = 0,
                      contentWeight  = 1e3,
                      styleWeight    = 1e-2,
-                     output_dirName = None):
+                     output_dirName = None,
+                     save_stats     = False):
     
   # Importing the Model
   model = getModel()
@@ -294,23 +293,22 @@ def runStyleTransfer(contentPath,
   
   
   normMeans = np.array([103.939, 116.779, 123.68])
-  minVals = -normMeans
-  maxVals = 255 - normMeans  
+  minVals   = -normMeans
+  maxVals   = 255 - normMeans  
 
   # Creating Logs to use for Plotting Later
   # global contentCostLog, styleCostLog, totalCostLog 
   contentCostLog, styleCostLog, totalCostLog = [], [], []
 
-
   if output_dirName:
-    PATH = os.path.join(os.curdir, 'outputs', output_dirName)
+    PATH = os.path.join(os.curdir, output_dirName)
     if not os.path.isdir(PATH):
       os.mkdir(PATH)
     os.chdir(PATH)
 
-  for iter in tqdm(range(iterations), leave=False):
 
-    # Computing the Grads and Loss
+  for iter in tqdm(range(iterations), leave=False):
+  # for iter in range(iterations):
     grads, allLoss = computeGrads(config)
 
     # Extracting different kinds of Losses
@@ -339,13 +337,13 @@ def runStyleTransfer(contentPath,
         new = deprocessImage(generateImage.numpy())
         cv2.imwrite(f'generateImage_{iter+1}.jpg', cv2.cvtColor(new, cv2.COLOR_BGR2RGB))
 
-    
-  
   bestImage = deprocessImage(generateImage.numpy())
-  cv2.imwrite(f'FINAL_OUTPUT.jpg', cv2.cvtColor(bestImage, cv2.COLOR_BGR2RGB))
-  # Saving the numpy Arrays to plot later
-  np.save('contentLoss.npy', contentCostLog)
-  np.save('styleLoss.npy', styleCostLog)
-  np.save('totalCostLoss.npy', totalCostLog)
+  cv2.imwrite(f'output.jpg', cv2.cvtColor(bestImage, cv2.COLOR_BGR2RGB))
+  
+  if save_stats:
+    # Saving the numpy Arrays to plot later
+    np.save('contentLoss.npy', contentCostLog)
+    np.save('styleLoss.npy', styleCostLog)
+    np.save('totalCostLoss.npy', totalCostLog)
 
   return bestImage, (contentCostLog, styleCostLog, totalCostLog)

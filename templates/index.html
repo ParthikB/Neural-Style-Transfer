@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='{{ url_for("static", filename="styles.css") }}'>
+    <!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
+
+</head>
+
+<body>
+    <h3>Neural Style Transfer</h3>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <center>
+
+        <form class="forms" method="POST" action="/" enctype="multipart/form-data">
+
+            <h3>Please upload the CONTENT Image:</h3>
+            <div class="file-upload">
+                <div class="file-select">
+                    <div class="file-select-button" id="fileName">Choose File</div>
+                    <div class="file-select-name" id="noFile">No file chosen...</div>
+                    <input type="file" name="img1name" id="img1name">
+                </div>
+
+                <img id="img1" src="#" />
+                
+            <h3>Please upload the CONTENT Image:</h3>
+                <div class="file-upload">
+                    <div class="file-select">
+                        <div class="file-select-button" id="fileName">Choose File</div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div>
+                        <input type="file" name="img2name" id="img2name">
+                    </div>
+    
+                    <img id="img2" src="#" />
+
+            </div>
+
+
+            <input type="submit" name="submit" id="submit" value="Submit">
+          
+            <img src="{{url_for('static', filename='output.jpg')}}" align="middle" />
+        </form>
+
+
+    </center>
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <!-- <script src="./index.js"></script> -->
+</body>
+
+</html>
