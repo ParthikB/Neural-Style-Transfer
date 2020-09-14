@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Transfer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='{{ url_for("static", filename="styles.css") }}'>
+
+</head>
+
+<h1 style="text-align: center;">Isn't this just amazing??</h1>
+
+<form class="forms" method="POST" action="/">
+<p style="text-align: center;"></p>
+<table border="1" style="border-collapse: collapse; width: 100%; margin-left: auto; margin-right: auto;">
+    <tbody>
+        <tr style="text-align: center;">
+            <td style="width: 100%; height: 100%;"><img src='{{ url_for("static", filename="output.jpg") }}' /></td>
+        </tr>
+        <tr style="height: 27px;">
+            <td style="width: 100%; text-align: center; height: 27px;"><input id="submit" name="submit" type="submit"
+                    value="I wanna do it again!" /></td>
+        </tr>
+    </tbody>
+</table>
+</form>
