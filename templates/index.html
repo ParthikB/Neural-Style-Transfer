@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<p style="text-align: center;"> </p>
+<p> </p>
+<!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <title>Style Transfer</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href='{{ url_for("static", filename="styles.css") }}'>
-    <!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
-<body>
-    <h3>Neural Style Transfer</h3>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <center>
+<h1 style="text-align: center;">Neural Style Transfer</h1>
+<p style="text-align: center;"> </p>
+<form class="forms" action="/output" enctype="multipart/form-data" method="POST">
 
-        <form class="forms" method="POST" action="/" enctype="multipart/form-data">
-
-            <h3>Please upload the CONTENT Image:</h3>
-            <div class="file-upload">
-                <div class="file-select">
-                    <div class="file-select-button" id="fileName">Choose File</div>
-                    <div class="file-select-name" id="noFile">No file chosen...</div>
-                    <input type="file" name="img1name" id="img1name">
-                </div>
-
-                <img id="img1" src="#" />
-                
-            <h3>Please upload the CONTENT Image:</h3>
-                <div class="file-upload">
+    <table style="width: 1645px; height: 243px; margin-left: auto; margin-right: auto;" cellspacing="20">
+        <tbody>
+            <tr>
+                <td style="width: 781px;">
+                    <h3 style="text-align: center;">CONTENT Image</h3>
+                </td>
+                <td style="width: 794px; text-align: right;">
+                    <h3 style="text-align: center;">STYLE Image</h3>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 781px;">
                     <div class="file-select">
-                        <div class="file-select-button" id="fileName">Choose File</div>
-                        <div class="file-select-name" id="noFile">No file chosen...</div>
-                        <input type="file" name="img2name" id="img2name">
+                        <!-- <div id="fileName" class="file-select-button">Choose File</div>
+                        <div id="noFile" class="file-select-name">No file chosen...</div> -->
+                        <input id="img1name" name="img1name" type="file" />
                     </div>
-    
-                    <img id="img2" src="#" />
+                </td>
+                <td style="width: 794px; text-align: right;">
+                    <div class="file-select">
+                        <!-- <div id="fileName" class="file-select-button">Choose File</div>
+                        <div id="noFile" class="file-select-name">No file chosen...</div> -->
+                        <input id="img2name" name="img2name" type="file" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 781px; text-align: center;"><img id="img1" src="#" /></td>
+                <td style="width: 794px; text-align: center;"><img id="img2" src="#" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <center>
+        <h3> </h3>
+        <div class="file-upload"><input id="submit" name="submit" type="submit" value="Do the magic!" /></div>
+</form>
+</center>
+<!-- <script src="./index.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
 
-            </div>
-
-
-            <input type="submit" name="submit" id="submit" value="Submit">
-          
-            <img src="{{url_for('static', filename='output.jpg')}}" align="middle" />
-        </form>
-
-
-    </center>
-    <script src="{{url_for('static', filename='index.js')}}"></script>
-    <!-- <script src="./index.js"></script> -->
-</body>
+<!-- <script src="./index.js"></script> -->
+<script src="{{url_for('static', filename='index.js')}}"></script>
 
 </html>
