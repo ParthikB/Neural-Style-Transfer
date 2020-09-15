@@ -4,7 +4,6 @@
 <p style="text-align: center;"> </p>
 <p> </p>
 <!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
-<script src="{{url_for('static', filename='index.js')}}"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href='{{ url_for("static", filename="styles.css") }}'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
@@ -33,15 +33,15 @@
             <tr>
                 <td style="width: 781px;">
                     <div class="file-select">
-                        <div id="fileName" class="file-select-button">Choose File</div>
-                        <div id="noFile" class="file-select-name">No file chosen...</div>
+                        <!-- <div id="fileName" class="file-select-button">Choose File</div>
+                        <div id="noFile" class="file-select-name">No file chosen...</div> -->
                         <input id="img1name" name="img1name" type="file" />
                     </div>
                 </td>
                 <td style="width: 794px; text-align: right;">
                     <div class="file-select">
-                        <div id="fileName" class="file-select-button">Choose File</div>
-                        <div id="noFile" class="file-select-name">No file chosen...</div>
+                        <!-- <div id="fileName" class="file-select-button">Choose File</div>
+                        <div id="noFile" class="file-select-name">No file chosen...</div> -->
                         <input id="img2name" name="img2name" type="file" />
                     </div>
                 </td>
@@ -61,5 +61,6 @@
 <!-- <link rel="stylesheet" type="text/css" href='./styles.css'> -->
 
 <!-- <script src="./index.js"></script> -->
+<script src="{{url_for('static', filename='index.js')}}"></script>
 
 </html>

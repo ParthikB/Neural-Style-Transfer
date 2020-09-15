@@ -20,7 +20,7 @@ $("#img2name").change(function () {
   readURL(this, '#img2');
 });
 
-var img_names = ["#img1name", "#img2name"];
+// var img_names = ["#img1name", "#img2name"];
 
 // // To show the name of the image//
 // for (let index = 0; index < img_names.length; index++) {
