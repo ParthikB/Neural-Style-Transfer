@@ -10,59 +10,102 @@ h1 {
 h3 {
   color: white;
   text-align: center;
-  font-size: 10px;
+  font-size: 25px;
   font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background-image: url("video.gif");
-  background-size: auto ;
-  background-color: #2A2A2E;
+  background-image: url('elements/back-block.gif');
+  background-size: 150px;
+  background-color: #222222;
   padding: 0;
   margin: 0;
 }
 
+
 /* Image properties */
 
-img {
+.input_img {
   max-width: 500px;
   max-height: 500px;
+  border: 10px white solid;
+}
+/* 
+.banner{
+  max-width: 500px;
+  max-height: 500px;
+  border: none;
+} */
 
+
+input[type=submit] {
+  background-color: transparent;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 5px solid #FFC300;
+  width: 200px;
 }
 
-input[type=file] {
-  color: white;
-  padding: 10px;
+input[type=submit]:hover {
+  background-color: #FFC300;
+  color: black;
 }
 
 
 /* all css code for file uploader */
 
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+  width: 80px;
+}
+
+.output_img{
+  width: 200%;
+  height: 200%;
+}
+
 .file-upload {
   display: block;
   text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   margin: 0 0 20px 0;
   padding: 0;
   width: 200px;
+  background-color: transparent;
+  transition-duration: 0.4s;
+
 }
 
 .file-upload .file-select {
   display: block;
-  border: 2px solid #dce4ec;
-  color: #34495e;
+  border: 2px solid #FFC300;
+  color: white;
   cursor: pointer;
   height: 40px;
   line-height: 40px;
   text-align: left;
-  background: #FFFFFF;
+  background: transparent;
   overflow: hidden;
   position: relative;
 }
 
+
 .file-upload .file-select .file-select-button {
-  background: #dce4ec;
+  background: transparent;
   padding: 0 10px;
   display: inline-block;
   height: 40px;
@@ -76,7 +119,7 @@ input[type=file] {
 }
 
 .file-upload .file-select:hover {
-  border-color: #34495e;
+  border-color: #FFC300;
   transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
@@ -84,8 +127,8 @@ input[type=file] {
 }
 
 .file-upload .file-select:hover .file-select-button {
-  background: #34495e;
-  color: #FFFFFF;
+  background: #FFC300;
+  color: black;
   transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;

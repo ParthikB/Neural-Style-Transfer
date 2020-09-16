@@ -9,18 +9,20 @@
 </head>
 
 <h1 style="text-align: center;">Isn't this just amazing??</h1>
-
+<body>
 <form class="forms" method="POST" action="/">
 <p style="text-align: center;"></p>
 <table border="1" style="border-collapse: collapse; width: 100%; margin-left: auto; margin-right: auto;">
     <tbody>
         <tr style="text-align: center;">
-            <td style="width: 100%; height: 100%;"><img src='{{ url_for("static", filename="output.jpg") }}' /></td>
+            <img id='banner' style="width: auto; max-width: 100%;" src="{{url_for('static', filename='elements/output_banner.jpg')}}">
+            <td><img style="width: auto; height: auto; max-width: 200%; max-height: 200%;" id='output_img' src='{{ url_for("static", filename="output.jpg") }}' /></td>
         </tr>
         <tr style="height: 27px;">
-            <td style="width: 100%; text-align: center; height: 27px;"><input id="submit" name="submit" type="submit"
+            <td style="width: 100%; text-align: center; height: 27px;"><input style="align-content: center;" id="submit" name="submit" type="submit"
                     value="I wanna do it again!" /></td>
         </tr>
     </tbody>
 </table>
 </form>
+</body>
