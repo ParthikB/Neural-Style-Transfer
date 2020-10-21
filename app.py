@@ -58,7 +58,7 @@ def output():
 			print('[INFO] Style Transfer Intializing..')
 			generatedImage, losses = runStyleTransfer(content_path,
 													style_path,
-													iterations     = 2,
+													iterations     = 1,
 													SAVE_EVERY     = 0,
 													contentWeight  = 1,
 													styleWeight    = 0.8,

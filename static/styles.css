@@ -24,12 +24,17 @@ body {
 
 
 /* Image properties */
-
+.imtip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 .input_img {
   max-width: 500px;
   max-height: 500px;
   border: 10px white solid;
 }
+
 /* 
 .banner{
   max-width: 500px;
@@ -41,7 +46,7 @@ body {
 input[type=submit] {
   background-color: transparent;
   color: white;
-  padding: 16px 32px;
+  padding: 16px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -59,20 +64,26 @@ input[type=submit]:hover {
   color: black;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 /* all css code for file uploader */
 
 
-.hide{
+.hide {
   display: none;
 }
 
-.show{
+.show {
   display: block;
   width: 80px;
 }
 
-.output_img{
+.output_img {
   width: 200%;
   height: 200%;
 }
