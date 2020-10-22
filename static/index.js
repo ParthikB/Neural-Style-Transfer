@@ -12,6 +12,14 @@ function readURL(input, tag) {
   }
 }
 
+
+function onButtonClick(div, div2){
+  document.getElementById(div).className="show";
+  document.getElementById(div2).className="hide";
+
+}
+
+
 $("#img1name").change(function () {
   readURL(this, '#img1');
 });
@@ -19,23 +27,3 @@ $("#img1name").change(function () {
 $("#img2name").change(function () {
   readURL(this, '#img2');
 });
-
-// var img_names = ["#img1name", "#img2name"];
-
-// // To show the name of the image//
-// for (let index = 0; index < img_names.length; index++) {
-//   var img_name = img_names[index];
-//   // console.log(img_name, filename);
-//   // console.log(1234)
-
-//   $(img_name).bind('change', function () {
-//     filename = $(img_name).val();
-//     if (/^\s*$/.test(filename)) {
-//       $(".file-upload").removeClass('active');
-//       $("#noFile").text("No file chosen...");
-//     } else {
-//       $(".file-upload").addClass('active');
-//       $("#noFile").text(filename);
-//     }
-//   });
-// }

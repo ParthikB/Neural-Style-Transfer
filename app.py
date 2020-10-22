@@ -15,8 +15,6 @@ if 'temp_user_files' not in os.listdir():
 	os.mkdir('temp_user_files')
 # temp_user_file : It'll contain the images uploaded by the user temporarily
 
-# app.config["CACHE_TYPE"] = "null"
-# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config["IMAGE_UPLOADS"] = os.path.join(os.getcwd(), 'temp_user_files')
 home_dir = os.getcwd()
 
@@ -45,7 +43,7 @@ def output():
 
 	if request.method == 'POST':
 		if request.form['submit'] == 'Do the magic!':
-			print(1111111111111, 'button pressed!', request.files, request.form)
+
 	# 		# Reading the POST request
 			content_img = request.files['img1name']
 			style_img   = request.files['img2name']
@@ -59,13 +57,13 @@ def output():
 	# 		# Running Style Transfer
 			print('[INFO] Style Transfer Intializing..')
 			generatedImage, losses = runStyleTransfer(content_path,
-									style_path,
-									iterations     = 2,
-									SAVE_EVERY     = 0,
-									contentWeight  = 1,
-									styleWeight    = 0.8,
-									output_dirName = 'static',
-									save_stats     = False)
+													style_path,
+													iterations     = 1,
+													SAVE_EVERY     = 0,
+													contentWeight  = 1,
+													styleWeight    = 0.8,
+													output_dirName = 'static',
+													save_stats     = False)
 
 
 			# Deleting the file from the database

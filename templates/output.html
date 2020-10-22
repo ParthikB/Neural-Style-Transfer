@@ -10,17 +10,26 @@
 
 <h1 style="text-align: center;">Isn't this just amazing??</h1>
 
-<form class="forms" method="POST" action="/">
-<p style="text-align: center;"></p>
-<table border="1" style="border-collapse: collapse; width: 100%; margin-left: auto; margin-right: auto;">
-    <tbody>
-        <tr style="text-align: center;">
-            <td style="width: 100%; height: 100%;"><img src='{{ url_for("static", filename="output.jpg") }}' /></td>
-        </tr>
-        <tr style="height: 27px;">
-            <td style="width: 100%; text-align: center; height: 27px;"><input id="submit" name="submit" type="submit"
-                    value="I wanna do it again!" /></td>
-        </tr>
-    </tbody>
-</table>
-</form>
+<body>
+    <form class="forms" method="POST" action="/">
+        <p style="text-align: center;"></p>
+        <!-- <div>
+            <img id='banner' style="width: auto; 
+        max-width: 100%; 
+        position: absolute;
+        top: 47.25%;
+        left: 0%;
+        z-index: 1;" src="{{url_for('static', filename='elements/output_banner.jpg')}}"> -->
+
+            <img style="
+        width: auto; 
+        height: 50%; 
+        border-image: url('output_banner.jpg') 30;"
+        
+        id='output_img' src='{{ url_for("static", filename="output.jpg") }}' />
+        <!-- </div> -->
+        <div style="text-align:center;">
+            <input class="center" id="submit" name="submit" type="submit" value="I wanna do it again!" />
+        </div>
+    </form>
+</body>
