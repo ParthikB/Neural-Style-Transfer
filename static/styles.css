@@ -29,6 +29,7 @@ body {
   bottom: 0;
   right: 0;
 }
+
 .input_img {
   max-width: 500px;
   max-height: 500px;
@@ -83,10 +84,17 @@ input[type=submit]:hover {
   width: 80px;
 }
 
-.output_img {
-  width: 200%;
-  height: 200%;
+#output_img {
+  width: 1000px;
+  height: auto;
+  border-image: url(http://placekitten.com/100/100) 25% round;
+  /* border: 2px solid #FFC300; */
+
 }
+
+/* .out_img {
+
+} */
 
 .file-upload {
   display: block;
@@ -95,7 +103,7 @@ input[type=submit]:hover {
   font-size: 12px;
   margin: 0 0 20px 0;
   padding: 0;
-  width: 200px;
+  width: 100%;
   background-color: transparent;
   transition-duration: 0.4s;
 
@@ -107,8 +115,9 @@ input[type=submit]:hover {
   color: white;
   cursor: pointer;
   height: 40px;
+  width: 100%;
   line-height: 40px;
-  text-align: left;
+  text-align: center;
   background: transparent;
   overflow: hidden;
   position: relative;
@@ -140,6 +149,8 @@ input[type=submit]:hover {
 .file-upload .file-select:hover .file-select-button {
   background: #FFC300;
   color: black;
+  width: 100%;
+  text-align: center;
   transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
