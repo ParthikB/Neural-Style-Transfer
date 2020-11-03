@@ -9,4 +9,4 @@ numpy==1.18.5
 Pillow==8.0.1
 tensorflow-gpu==2.2.0
 keras==2.4.3
-opencv-python==4.4
+opencv-python==4.4.0.42
