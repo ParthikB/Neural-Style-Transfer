@@ -47,6 +47,8 @@ def output():
 	# 		# Reading the POST request
 			content_img = request.files['img1name']
 			style_img   = request.files['img2name']
+			iterations  = int(request.form['iterations'])
+			print('Iterations :',iterations)
 
 	# 		# Saving the Image file in local env
 			content_path = os.path.join(app.config["IMAGE_UPLOADS"], 'content_img.jpg')
@@ -58,7 +60,7 @@ def output():
 			print('[INFO] Style Transfer Intializing..')
 			generatedImage, losses = runStyleTransfer(content_path,
 													style_path,
-													iterations     = 1,
+													iterations     = iterations,
 													SAVE_EVERY     = 0,
 													contentWeight  = 1,
 													styleWeight    = 0.8,

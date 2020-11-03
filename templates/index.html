@@ -57,11 +57,19 @@
         </tbody>
     </table>
     <center>
-        <h3> </h3>
+        
+        <h3> Style Quality </h3>
+        <label for="iterations">Poor (Fastest)</label>
+        <input type="range" id="iterations" name="iterations" min="2" max="102" step="10" value="20">
+        <label for="iterations">Best (Slowest)</label>
+        <!-- <input type="submit"> -->
+        
+        <br><br><br><br><br><br>
+
         <img class='hide' id='loader' src="{{url_for('static', filename='elements/loading.gif')}}">
         <div class="file-upload" id='submit-button'>
-            <input id="submit-button" name="submit" type="submit"
-                value="Do the magic!" onclick="onButtonClick('loader', 'submit-button')" />
+            <input id="submit-button" name="submit" type="submit" value="Do the magic!"
+                onclick="onButtonClick('loader', 'submit-button')" />
         </div>
 </form>
 </center>
