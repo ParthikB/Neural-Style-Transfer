@@ -1,0 +1,226 @@
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 150px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+h3 {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Montserrat", sans-serif;
+}
+
+label {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-image: url('elements/back-block.gif');
+  background-size: 150px;
+  background-color: #222222;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Image properties */
+.imtip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.input_img {
+  max-width: 500px;
+  max-height: 500px;
+  border: 10px white solid;
+}
+
+/* 
+.banner{
+  max-width: 500px;
+  max-height: 500px;
+  border: none;
+} */
+
+
+input[type=submit] {
+  background-color: transparent;
+  color: white;
+  padding: 16px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 5px solid #FFC300;
+  width: 200px;
+}
+
+input[type=submit]:hover {
+  background-color: #FFC300;
+  color: black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* all css code for file uploader */
+
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+  width: 80px;
+}
+
+#output_img {
+  width: 1000px;
+  height: auto;
+  border-image: url(http://placekitten.com/100/100) 25% round;
+  /* border: 2px solid #FFC300; */
+
+}
+
+/* .out_img {
+
+} */
+
+.file-upload {
+  display: block;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+  transition-duration: 0.4s;
+
+}
+
+.file-upload .file-select {
+  display: block;
+  border: 2px solid #FFC300;
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.file-upload .file-select .file-select-button {
+  background: transparent;
+  padding: 0 10px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+
+.file-upload .file-select .file-select-name {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.file-upload .file-select:hover {
+  border-color: #FFC300;
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.file-upload .file-select:hover .file-select-button {
+  background: #FFC300;
+  color: black;
+  width: 100%;
+  text-align: center;
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.file-upload.active .file-select {
+  border-color: #3fa46a;
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.file-upload.active .file-select .file-select-button {
+  background: #3fa46a;
+  color: #FFFFFF;
+  transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.file-upload .file-select input[type=file] {
+  z-index: 100;
+  cursor: pointer;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.file-upload .file-select.file-select-disabled {
+  opacity: 0.65;
+}
+
+.file-upload .file-select.file-select-disabled:hover {
+  cursor: default;
+  display: block;
+  border: 2px solid #dce4ec;
+  color: #34495e;
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 5px;
+  text-align: left;
+  background: #FFFFFF;
+  overflow: hidden;
+  position: relative;
+}
+
+.file-upload .file-select.file-select-disabled:hover .file-select-button {
+  background: #dce4ec;
+  color: #666666;
+  padding: 0 10px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+
+.file-upload .file-select.file-select-disabled:hover .file-select-name {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 10px;
+}
