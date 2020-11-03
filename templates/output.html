@@ -20,14 +20,13 @@
         top: 47.25%;
         left: 0%;
         z-index: 1;" src="{{url_for('static', filename='elements/output_banner.jpg')}}"> -->
+        <div style="
+        text-align: center;">
 
-            <img style="
-        width: auto; 
-        height: 50%; 
-        border-image: url('output_banner.jpg') 30;"
-        
-        id='output_img' src='{{ url_for("static", filename="output.jpg") }}' />
-        <!-- </div> -->
+            <img id='output_img'
+                src='{{ url_for("static", filename="output.jpg") }}' />
+        </div>
+<br><br><hr><hr>
         <div style="text-align:center;">
             <input class="center" id="submit" name="submit" type="submit" value="I wanna do it again!" />
         </div>
